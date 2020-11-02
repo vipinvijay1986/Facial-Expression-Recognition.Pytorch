@@ -26,7 +26,8 @@ transform_test = transforms.Compose([
 def rgb2gray(rgb):
     return np.dot(rgb[...,:3], [0.299, 0.587, 0.114])
 
-raw_img = io.imread('images/1.jpg')
+fileName='test7.jpg'
+raw_img = io.imread(os.path.join('/content/expression/expression_repo/images/',fileName))
 gray = rgb2gray(raw_img)
 gray = resize(gray, (48,48), mode='symmetric').astype(np.uint8)
 
@@ -88,7 +89,7 @@ plt.tight_layout()
 # show emojis
 
 #plt.show()
-plt.savefig(os.path.join('images/results/l.png'))
+plt.savefig(os.path.join('/content/expression/expression_repo/images/results',fileName))
 plt.close()
 
 print("The Expression is %s" %str(class_names[int(predicted.cpu().numpy())]))
